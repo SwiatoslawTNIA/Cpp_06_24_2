@@ -21,10 +21,11 @@ vpath %.h headers
 run: c++
 	./c++
 
-
-c++: c++.o time.o
+stone.o: stone.cc
+vector-.o: vector-.cc 
+c++: c++.o time.o vector-.o stone.o #link all the compiled files together
 time.o: time.cc 
-c++.o: c++.cc 
+c++.o: c++.cc vector-.h
 
 .INTERMEDIATE: *.o
 
@@ -36,3 +37,5 @@ depend: c++.cc
 .PHONY:clean
 clean:
 	rm -rf *.o c++
+
+	
